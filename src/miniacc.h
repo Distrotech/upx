@@ -770,6 +770,9 @@
 #elif defined(__arm__) || defined(_M_ARM)
 #  define ACC_ARCH_ARM              1
 #  define ACC_INFO_ARCH             "arm"
+#elif defined(__aarch64__) || defined(_M_AARCH64)
+#  define ACC_ARCH_AARCH64          1
+#  define ACC_INFO_ARCH            "aarch64"
 #elif (UINT_MAX <= ACC_0xffffL) && defined(__AVR__)
 #  define ACC_ARCH_AVR              1
 #  define ACC_INFO_ARCH             "avr"
@@ -1353,6 +1356,8 @@ extern "C" {
 #elif 1 && (ACC_ARCH_ARM) && defined(__ARMEB__) && !defined(__ARMEL__)
 #  define ACC_ABI_BIG_ENDIAN        1
 #elif 1 && (ACC_ARCH_ARM) && defined(__ARMEL__) && !defined(__ARMEB__)
+#  define ACC_ABI_LITTLE_ENDIAN     1
+#elif 1 && (ACC_ARCH_AARCH64) && !defined(__ARMEB__)
 #  define ACC_ABI_LITTLE_ENDIAN     1
 #elif 1 && (ACC_ARCH_MIPS) && defined(__MIPSEB__) && !defined(__MIPSEL__)
 #  define ACC_ABI_BIG_ENDIAN        1
