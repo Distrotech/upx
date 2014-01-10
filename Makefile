@@ -16,6 +16,9 @@ srcdir = .
 top_srcdir = .
 include $(wildcard $(top_srcdir)/Makevars.global ./Makevars.local)
 
+INSTALL=ginstall
+BINDIR=/usr/bin
+MANDIR=/usr/share/man/man1
 
 # info: src/stub needs special build tools
 BUILD_STUB = 0
@@ -39,4 +42,8 @@ endif
 
 
 .PHONY: default all mostlyclean clean distclean maintainer-clean
+
+install: all
+	$(INSTALL) -D src/upx.out $(DESTDIR)$(BINDIR)/upx
+	$(INSTALL) -D doc/upx.1 $(DESTDIR)$(MANDIR)/upx.1
 
